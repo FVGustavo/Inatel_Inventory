@@ -19,8 +19,21 @@ void item_insert(list<Item_t> *item_list) {
     
     cout << "\n4 - Insira o número de identificação do seu item: ";
     cin >> item.item_id;
-    
+    while(cin.fail()){
+        cout << "Número de identificação inválido! Insira um número inteiro: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin >> item.item_id;
+    }
+
     cout << "\n5 - Insira o nível de raridade do seu item (0 a 100): ";
+    while(cin.fail()){
+        cout << "Nível de raridade inválido! Insira um número inteiro: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin >> item.item_id;
+    }
+
     do {
         cin >> item.item_rarity;
         if(item.item_rarity < 0 || item.item_rarity > 100){

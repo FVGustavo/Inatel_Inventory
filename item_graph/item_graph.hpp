@@ -5,16 +5,17 @@
 #include <list>
 
 #include "../item/item.hpp"
+#include "../item_similarity_calc/item_similarity_calc.hpp"
 
 using namespace std;
 
 /**
- * @brief Função para criar um grafo baseado nos itens recebidos.
+ * @brief Função para criar um grafo com a similaridade entre os itens.
  * 
- * @param item_similarity Similaridade entre os 2 primeiros itens da lista (atuará como peso da aresta do grafo).
+ * @param item_list Ponteiro para ista de itens.
  * @return int 0: sucesso; int -1: erro.
  */
-int item_graph(list<Item_t> *item_list, int item_similarity);
+int item_graph(list<Item_t> *item_list);
 
 /**
  * @brief Função para criar as arestas do grafo.

@@ -22,13 +22,18 @@ list<Item_t> item_list;
 
 int main() {
     int option = 0;
-    int item_similarity = 0;
     int ret = 0;
     
     while(option != 9){
         menu();
         cout << "Qual opção você deseja? ";
         cin >> option;
+        while(cin.fail()){
+            cout << "\nOpção inválida. Tente novamente.\n" << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin >> option;
+        }
 
         switch(option){
             case 1:
@@ -36,10 +41,7 @@ int main() {
                 break;
     
             case 2:
-                ret = item_similarity_calc(item_list, &item_similarity);
-                if(ret != -1){
-                    ret = item_graph(&item_list, item_similarity);
-                }
+                item_graph(&item_list);
                 break;
     
             case 3:
@@ -78,4 +80,3 @@ int main() {
   
   return 0;
 }
-
