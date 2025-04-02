@@ -2,43 +2,50 @@
 
 #define TAG "| ITEM_GRAPH |"
 
-int item_graph(list<Item_t> *item_list, int item_similarity){
-    cout << "\nVamos criar o grafo com os itens similares!" << endl;
+list<Node_t>* list_adj = nullptr;
+int item_quant = 0;
 
-    int vertexes;
-    bool oriented;
-
-    vertexes = item_list->size();
-    if((vertexes & 1) != vertexes){
-        cout << "\n" << TAG << " A quantidade de itens na lista é ímpar" << endl;
+int item_graph(list<Item_t> *item_list){
+    if(item_list == nullptr || item_list->size() < 2){
+        cout << TAG << " A lista de itens deve conter pelo menos 2 elementos para criar o grafo." << endl;
         return -1;
     }
 
-    cout << "A quantidade de vértices que o grafo terá é: " << vertexes << endl;
-    
-    cout << "O grafo é orientado? (1 - sim, 0 - não): ";
+    cout << "\nVamos criar o grafo com os itens similares!" << endl;
+
+    bool oriented;
+    cout << "O grafo é orientado? (1 -> Sim; 0 -> Não): ";
     cin >> oriented;
 
-    list<Node_t> list_adj[vertexes];
+    item_quant = 0;
+    if(list_adj){
+        delete[] list_adj;
+        list_adj = nullptr;
+    }
 
-    Item_t item_1, item_2;
-    
-    for(list<Item_t>::iterator item_list_it = item_list->begin(); item_list_it != item_list->end(); ++item_list_it){
-        item_1 = *item_list_it;
-        item_list_it++;
+    for(const auto& item : *item_list){
+        ++item_quant;
+    }
 
-        item_2 = *item_list_it;
-        item_list_it--;
-        
-        item_graph_edge(list_adj, item_1, item_2, item_similarity, oriented);
+    list_adj = new list<Node_t>[item_quant + 1];
 
-        cout << "\nGrafo atual: " << endl;
-        for(int i = 0; i < vertexes; i++){
-            for(list<Node_t>::iterator list_adj_it = list_adj[i].begin(); list_adj_it != list_adj[i].end(); ++list_adj_it){
-                cout << i << " " << list_adj_it->vertex << " " << list_adj_it->weight << endl;
-            }
+    for(list<Item_t>::iterator it1 = item_list->begin(); it1 != item_list->end(); ++it1){
+        for(list<Item_t>::iterator it2 = next(it1); it2 != item_list->end(); ++it2){
+            int similarity;
+            item_similarity_calc(*it1, *it2, &similarity);
+            item_graph_edge(list_adj, *it1, *it2, similarity, oriented);
         }
     }
+
+    cout << "\n" << TAG << " Grafo atual:\n" << endl;
+    for(int i = 0; i <= item_quant; i++){
+        for(list<Node_t>::iterator list_adj_it = list_adj[i].begin(); list_adj_it != list_adj[i].end(); ++list_adj_it){
+            cout << i << " -> " << list_adj_it->vertex << " (Peso: " << list_adj_it->weight << ")" << endl;
+        }
+    }
+
+    cout << "\n" << TAG << " Grafo criado com sucesso!\n" << endl;
+
     return 0;
 }
 

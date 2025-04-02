@@ -6,12 +6,13 @@
 #include "../item/item.hpp"
 
 /**
- * @brief Função para calcular a similaridade entre dois itens.
+ * @brief Função que calcula a similaridade entre dois itens (tal valor atuará como peso da aresta do grafo).
  * 
- * @param item_list Lista de itens para pegar os dois primeiros itens.
- * @param item_similarity Variável para armazenar a similaridade entre os dois itens.
- * @return int 
+ * @param item_1 Primeiro item a ser comparado.
+ * @param item_2 Segundo item a ser comparado.
+ * @param item_similarity Valor da similaridade entre os dois itens.
+ * @return int 0: sucesso; int -1: erro.
  */
-int item_similarity_calc(list<Item_t> item_list, int* item_similarity);
+int item_similarity_calc(Item_t item_1, Item_t item_2, int* item_similarity);
 
 #endif // ITEM_SIMILARITY_CALC_HPP

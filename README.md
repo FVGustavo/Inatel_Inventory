@@ -1,7 +1,9 @@
 # Inatel_Inventory
 Projeto Algoritmos III - Inatel
 
-É necessário instalar as extensões C/C++, C/C++ Extension Pack, Code Runner, CMake, CMake Tools, CMake IntelliSence, Code Runner e Git Graph no Visual Studio Code.
+Projeto feito em C++ para simular um Inventário infinito de uma campanha de D&D. O projeto tem como objetivo por em prática conceitos de Algoritmos III, como grafos, árvores binárias de busca, estrutura de dados etc.
+
+Extensões Utilizadas: C/C++, C/C++ Extension Pack, Code Runner, CMake, CMake Tools, CMake IntelliSence, Code Runner, Git Graph, Doxygen Documentation.
 
 Todas as declarações para as funções necessárias para o projeto já foram criadas, juntamente de um respectivo arquivo .hpp e .cpp a ela.
 
@@ -11,4 +13,18 @@ O comando "make clean" limpa os objetos gerados durante o processo de compilaç�
 
 O arquivo CMakeLists.txt tem o mesmo funcionamento do Makefile, mas com um método de uso diferente e mais longo. Pessoalmente, estou usando o Makefile e seus comandos.
 
-O arquivo .gitignore é direcionado para explicitar o que deverá ser ignorado toda vez que um novo commit é feito.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Project Algorithms III - Inatel
+
+Project developed in C++ to simulate an infinite inventory for a D&D campaign. The project aims to put into practice concepts from Algorithms III, such as graphs, binary search trees, data structures, etc.
+
+Extensions Used: C/C++, C/C++ Extension Pack, Code Runner, CMake, CMake Tools, CMake IntelliSense, Code Runner, Git Graph, Doxygen Documentation.
+
+All declarations for the functions required for the project have already been created, along with their respective .hpp and .cpp files.
+
+The Makefile is designed to manage the project's compilation needs. It is through this file that you can compile and run the code, as it contains all the commands specifying what to include in the compilation.
+To compile and run the project, simply open the terminal and type the command "make". If you only want to compile, type the command "make build". If you only want to run, type the command "make run".
+The command "make clean" cleans up the objects generated during the compilation process.
+
+The CMakeLists.txt file serves the same purpose as the Makefile but uses a different and longer method. Personally, I am using the Makefile and its commands.
