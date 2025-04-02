@@ -4,17 +4,18 @@
 #include <cstring>
 #include <limits>
 
-#include "../item/item.hpp"
-#include "menu/menu.hpp"
-#include "item_insert/item_insert.hpp"
-#include "item_similarity_calc/item_similarity_calc.hpp"
-#include "item_graph/item_graph.hpp"
-#include "item_check/item_check.hpp"
-#include "item_search/item_search.hpp"
-#include "item_list_by_name/item_list_by_name.hpp"
-#include "item_list_by_rarity/item_list_by_rarity.hpp"
-#include "item_count_by_same_magical_property/item_count_by_same_magical_property.hpp"
-#include "item_remove_by_rarity/item_remove_by_rarity.hpp"
+#include "components/menu/menu.hpp"
+#include "components/item/item.hpp"
+#include "components/item_check/item_check.hpp"
+#include "components/item_count_by_same_magical_property/item_count_by_same_magical_property.hpp"
+#include "components/item_graph/item_graph.hpp"
+#include "components/item_insert/item_insert.hpp"
+#include "components/item_list_by_given_similarity/item_list_by_given_similarity.hpp"
+#include "components/item_list_by_name/item_list_by_name.hpp"
+#include "components/item_list_by_rarity/item_list_by_rarity.hpp"
+#include "components/item_remove_by_rarity/item_remove_by_rarity.hpp"
+#include "components/item_search/item_search.hpp"
+#include "components/item_similarity_calc/item_similarity_calc.hpp"
 
 using namespace std;
 
@@ -22,7 +23,6 @@ list<Item_t> item_list;
 
 int main() {
     int option = 0;
-    int ret = 0;
     
     while(option != 9){
         menu();
@@ -42,6 +42,7 @@ int main() {
     
             case 2:
                 item_graph(&item_list);
+                // item_list_by_given_similarity(item_list, owner_name, item_id, minimum_similarity);
                 break;
     
             case 3:

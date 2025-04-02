@@ -23,9 +23,7 @@ int item_graph(list<Item_t> *item_list){
         list_adj = nullptr;
     }
 
-    for(const auto& item : *item_list){
-        ++item_quant;
-    }
+    item_quant = item_list->size();
 
     list_adj = new list<Node_t>[item_quant + 1];
 
