@@ -16,6 +16,12 @@ int item_graph(list<Item_t> *item_list){
     bool oriented;
     cout << "O grafo é orientado? (1 -> Sim; 0 -> Não): ";
     cin >> oriented;
+    while(cin.fail()){
+        cout << "Número de identificação inválido! Insira um número inteiro: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin >> oriented;
+    }
 
     item_quant = 0;
     if(list_adj){
@@ -23,9 +29,7 @@ int item_graph(list<Item_t> *item_list){
         list_adj = nullptr;
     }
 
-    for(const auto& item : *item_list){
-        ++item_quant;
-    }
+    item_quant = item_list->size();
 
     list_adj = new list<Node_t>[item_quant + 1];
 

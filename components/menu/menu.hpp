@@ -5,6 +5,6 @@
  * @brief Função que exibe o menu de opções do programa.
  * 
  */
-void menu();
+void menu(void);
 
 #endif // MENU_HPP

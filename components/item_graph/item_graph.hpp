@@ -3,11 +3,10 @@
 
 #include <iostream>
 #include <list>
+#include <limits>
 
 #include "../item/item.hpp"
 #include "../item_similarity_calc/item_similarity_calc.hpp"
-
-using namespace std;
 
 /**
  * @brief Função para criar um grafo com a similaridade entre os itens.
