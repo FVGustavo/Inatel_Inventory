@@ -22,8 +22,14 @@ using namespace std;
 list<Item_t> item_list;
 
 int main() {
+    string owner_name = "";
+
+    int ret = 0;
     int option = 0;
-    
+    int option_list = 0;
+    int item_id = 0;
+    int minimum_similarity = 0;
+
     while(option != 9){
         menu();
         cout << "Qual opção você deseja? ";
@@ -39,45 +45,75 @@ int main() {
             case 1:
                 item_insert(&item_list);
                 break;
-    
+
             case 2:
-                item_graph(&item_list);
-                // item_list_by_given_similarity(item_list, owner_name, item_id, minimum_similarity);
+                ret = item_graph(&item_list);
+                if(ret){
+                    break;
+                }
+                cout << "Deseja pesquisar os itens não pertencentes a um determinado jogador com uma similaridade mínima? (1 -> Sim; 0 -> Não): ";
+                cin >> option_list;
+                if(option_list == 1){
+                    cout << "\n" << " Informe o nome do jogador: ";
+                    cin >> owner_name;
+
+                    cout << "\n" << " Informe o código do item: ";
+                    cin >> item_id;
+                    while(cin.fail()){
+                        cout << "Número de identificação inválido! Insira um número inteiro: ";
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        cin >> item_id;
+                    }
+
+                    cout << "\n" << " Informe a similaridade mínima: ";
+                    cin >> minimum_similarity;
+                    while(cin.fail()){
+                        cout << "Similaridade mínima inválida! Insira um número inteiro: ";
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        cin >> minimum_similarity;
+                    }
+
+                    item_list_by_given_similarity(item_list, owner_name, item_id, minimum_similarity);
+                }
+
+                cout << "Opção inválida." << endl;
                 break;
-    
+
             case 3:
                 item_search();
                 break;
-    
+
             case 4:
                 item_check();
                 break;
-    
+
             case 5:
                 item_list_by_name();
                 break;
-    
+
             case 6:
                 item_list_by_rarity();
                 break;
-    
+
             case 7:
                 item_count_by_same_magical_property();
                 break;
-    
+
             case 8:
                 item_remove_by_rarity();
                 break;
-    
+
             case 9:
                 cout << "Saindo do programa..." << endl;
                 break;
-    
+
             default:
                 cout << "Opção inválida. Tente novamente." << endl;
                 break;
         }
-  }
-  
-  return 0;
+    }
+
+    return 0;
 }

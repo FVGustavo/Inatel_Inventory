@@ -16,6 +16,12 @@ int item_graph(list<Item_t> *item_list){
     bool oriented;
     cout << "O grafo é orientado? (1 -> Sim; 0 -> Não): ";
     cin >> oriented;
+    while(cin.fail()){
+        cout << "Número de identificação inválido! Insira um número inteiro: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin >> oriented;
+    }
 
     item_quant = 0;
     if(list_adj){

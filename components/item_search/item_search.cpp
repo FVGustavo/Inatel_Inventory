@@ -4,6 +4,6 @@
 
 int item_search(){
     cout << "Funcionalidade em construção\n" << endl;
-    
+
     return 0;
 }
